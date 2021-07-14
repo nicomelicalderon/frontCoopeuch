@@ -1,0 +1,25 @@
+<mat-toolbar>
+    <span>Edit Task</span>
+    <span class="spacer"></span>
+    <button mat-button color="primary" type="button" (click)="backToList()">Back to list</button>
+</mat-toolbar>
+<mat-card class="example-card">
+    <mat-card-content>
+        <container *ngIf="editTaskForm">
+            <form [formGroup]="editTaskForm" (ngSubmit)="editTask()">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <input matInput type="text" placeholder="Pick up food" id="description"
+                        formControlName="description">
+                    <mat-error *ngIf="editTaskForm.touched && editTaskForm.invalid">
+                        Description is required.
+                    </mat-error>
+                </mat-form-field>
+                <mat-slide-toggle class="example-full-width" formControlName="active">Active</mat-slide-toggle>
+
+
+                <button mat-raised-button class="customButton" color="primary" type="submit">Edit Task</button>
+            </form>
+        </container>
+    </mat-card-content>
+</mat-card>
